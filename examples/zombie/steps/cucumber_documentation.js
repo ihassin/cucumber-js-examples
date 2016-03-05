@@ -12,11 +12,17 @@ module.exports = function() {
 		return this.browser.visit('https://github.com/cucumber/cucumber-js/blob/master/README.md');
 	});
 
-	this.Then(/I should see a "(.*)" section/, function(title) {
+	this.Then(/^I should see a "(.*)" section$/, function(title) {
 		// Using zombie.assert to test a link is present
 		// If the assertion fails an error will be thrown and the cucumber test will fail
     // Zombie will use my message in the second argument as the error message
 		this.browser.assert.element('a[href="#' + title.toLowerCase() + '"]', 'The "' + title + '" section was not found');
+	});
+
+  this.Then('I should see a "$badge" badge', function(badge) {
+		// You can also use simple strings to match step definitions, cucumber expands this step to regexp:
+		// /^I should see a "([^"]*)" badge$/
+		this.browser.assert.element('img[alt="' + badge + '"]', 'The "' + badge + '" was not found');
 	});
 
 };
