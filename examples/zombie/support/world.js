@@ -4,9 +4,9 @@
 var zombie = require('zombie');
 
 function World() {
-  this.browser = new zombie({ runScripts: false });
+    this.browser = new zombie({ runScripts: false });
 }
 
 module.exports = function() {
-  this.World = World;
+    this.World = World;
 };
