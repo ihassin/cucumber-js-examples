@@ -1,0 +1,13 @@
+{
+  "name": "cucumber-js-test",
+  "version": "0.0.0",
+  "description": "> Some tests of using cucumber JS with zombie and selenium",
+  "main": "index.js",
+  "scripts": {
+    "test-zombie": "./node_modules/.bin/cucumber.js -r examples/zombie/steps examples/zombie/features examples/zombie/support"
+  },
+  "devDependencies": {
+    "cucumber": "^0.9.5",
+    "zombie": "^4.2.1"
+  }
+}
