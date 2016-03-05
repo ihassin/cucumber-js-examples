@@ -4,7 +4,7 @@
 var zombie = require('zombie');
 
 function World() {
-  this.browser = new zombie();
+  this.browser = new zombie({ runScripts: false });
 }
 
 module.exports = function() {

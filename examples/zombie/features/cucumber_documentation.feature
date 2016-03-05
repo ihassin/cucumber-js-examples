@@ -4,6 +4,6 @@ Feature: Cucumber documentation
   So I can write better applications
 
 Scenario: Usage documentation
-    Given I am on the cucumber.js Github repository
+    Given I am on the cucumber.js GitHub repository
     When I go to the README file
     Then I should see a "Usage" section
