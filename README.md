@@ -69,4 +69,17 @@ Another consideration might be code sharing. You may want to set up a bunch of h
 
 Related to code sharing, another consideration might be inadvertently creating dependencies between steps. If the first step, `I have an account` does something then adds the user to the world, subsequent steps are reliant on that. If you try to re-use the `When I login` somewhere else and it doesn't have the user assigned to the world as you expected in your tests then you may have to rewrite it. You could add quite a lot of brittleness to your tests if steps have implicit side-effects on the world.
 
+---
+
+## Cucumber and phantom
+
+Dependencies:
+
+* cucumber
+* phantom (not phantomjs)
+
+This example is using the raw Phantom JS API from Node.js (on NPM that's `phantom` not `phantomjs`), so the change over zombie is this is now a real WebKit browser, albeit a headless one.
+
+The Phantom JS API for `createBrowser` is asynchronous, but the cucumber.js `World` constructor can not be run asynchronously (it doesn't support the `callback` or promises) so instead we open a new browser in the `Before` hook and close it in the `After` hook for each scenario. In effect this is no different from the zombie example which creates a new browser in the `World` constructor, which is run for every scenario.
+
 [BusinessReadableDSL]:http://martinfowler.com/bliki/BusinessReadableDSL.html
