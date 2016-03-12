@@ -11,6 +11,12 @@ Dependencies:
 * cucumber
 * zombie
 
+To run:
+
+```
+$ npm run test-zombie
+```
+
 ---
 
 In `examples/zombie/support/world.js` we define the world that will be the context for all the step definitions.
@@ -78,10 +84,16 @@ Dependencies:
 * cucumber
 * phantom (not phantomjs)
 
+To run:
+
+```
+$ npm run test-phantom
+```
+
 This example is using the raw Phantom JS API from Node.js (on NPM that's `phantom` not `phantomjs`), so the change over zombie is this is now a real WebKit browser, albeit a headless one.
 
-The Phantom JS API for `createBrowser` is asynchronous, but the cucumber.js `World` constructor can not be run asynchronously (it doesn't support the `callback` or promises) so instead we open a new browser in the `Before` hook and close it in the `After` hook for each scenario. In effect this is no different from the zombie example which creates a new browser in the `World` constructor, which is run for every scenario.
+Whilst phantom does have a promise based API, it doesn't have the convenience methods that the zombie API does so some additional methods have been added to the `World` to provide a similar API. The main differences are that creating a browser and evaluating a selector are async operations, so some additional code is needed to manage that. It also requires an `After` hook to close the browser, otherwise the Phantom JS processes won't go away.
 
-To see the messages sent to the Phantom JS process run like, `DEBUG=true npm run test-phantom`.
+To see the messages sent to the Phantom JS process run as, `DEBUG=true npm run test-phantom`.
 
 [BusinessReadableDSL]:http://martinfowler.com/bliki/BusinessReadableDSL.html
