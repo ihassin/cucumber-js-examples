@@ -82,4 +82,6 @@ This example is using the raw Phantom JS API from Node.js (on NPM that's `phanto
 
 The Phantom JS API for `createBrowser` is asynchronous, but the cucumber.js `World` constructor can not be run asynchronously (it doesn't support the `callback` or promises) so instead we open a new browser in the `Before` hook and close it in the `After` hook for each scenario. In effect this is no different from the zombie example which creates a new browser in the `World` constructor, which is run for every scenario.
 
+To see the messages sent to the Phantom JS process run like, `DEBUG=true npm run test-phantom`.
+
 [BusinessReadableDSL]:http://martinfowler.com/bliki/BusinessReadableDSL.html
